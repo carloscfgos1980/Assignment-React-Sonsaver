@@ -1,4 +1,4 @@
-const SongList = ({ songs }) => {
+const SongList = ({ songs, handleDelete }) => {
     //const songs = props.songs
     return (
         <div className="song-list">
@@ -14,6 +14,7 @@ const SongList = ({ songs }) => {
                     <p>{song.artist}</p>
                     <p> {song.genre}</p>
                     <p>{song.rating}</p>
+                    <button onClick={() => handleDelete(song.id)}>delete</button>
                 </div>
             ))}
         </div>
