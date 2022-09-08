@@ -1,23 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SongList from "./components/SongsList";
 
 const Home = () => {
-    const [songs, setSongs] = useState([
-        { id: 1, title: 'One Love', artist: 'Bob Marley', genre: 'reggae', rating: 5 },
-        { id: 2, title: 'Colors', artist: 'Black Pumas', genre: 'rock&roll', rating: 5 },
-        { id: 3, title: 'Welcome to JamRock', artist: 'Damian MArley', genre: 'reggae', rating: 5 },
-        { id: 4, title: 'Abajo Too', artist: 'Kamankola', genre: 'Cuban alternative', rating: 5 }
-    ]);
+    const [songs, setSongs] = useState(null);
+    const [isPending, setIsPending] = useState(true);
+    const [error, setError] = useState(null);
 
-    const handleDelete = (id) => {
-        //console.log('click')
-        const newSongs = songs.filter(song => song.id !== id);
-        setSongs(newSongs);
-    }
 
+    /*
+    This is condiction is to catch an error when do sucessfully fetching but there is an error at the end point of the REST API
+                   if (!res.ok) {
+                        throw Error('could not fetching');
+                    }
+    */
+    useEffect(() => {
+        fetch('http://localhost:8000/songs')
+            .then(res => {
+                if (!res.ok) {
+                    throw Error('could not fetching');
+                }
+                return res.json();
+            })
+            .then(data => {
+                setSongs(data);
+                setIsPending(false);
+                setError(null);
+            })
+            .catch(err => {
+                setIsPending(false);
+                setError(err.message);
+            });
+    }, []);
+
+    // I use {} to wrap the return like this:
+    // {songs && <SongList songs={songs} handleDelete={handleDelete} />}
+    // This prevent an erro during mapping cos fetching take some time, like this, it waits to fetch and then mapping
     return (
         <div className="home">
-            <SongList songs={songs} handleDelete={handleDelete} />
+            {error && <div>{error}</div>}
+            {isPending && <div>Loading...</div>}
+            {songs && <SongList songs={songs} />}
         </div>
     );
 }
