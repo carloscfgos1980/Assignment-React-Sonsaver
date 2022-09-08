@@ -26,9 +26,13 @@ This is condiction is to catch an error when do sucessfully fetching but there i
                 setError(null);
             })
             .catch(err => {
-                // auto catches network / connection error
-                setIsPending(false);
-                setError(err.message);
+                if (err.name === 'AbortError') {
+                    console.log('fetch aborted')
+                } else {
+                    // auto catches network / connection error
+                    setIsPending(false);
+                    setError(err.message);
+                }
             });
 
         // abort the fetch
