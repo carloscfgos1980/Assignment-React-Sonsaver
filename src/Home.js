@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import SongList from "./components/SongsList";
+import useFetch from "./components/useFetch";
 
 const Home = () => {
-    const [songs, setSongs] = useState(null);
-    const [isPending, setIsPending] = useState(true);
-    const [error, setError] = useState(null);
+    const { data: songs, isPending, error } = useFetch('http://localhost:8000/songs')
 
 
     /*
@@ -13,24 +12,6 @@ const Home = () => {
                         throw Error('could not fetching');
                     }
     */
-    useEffect(() => {
-        fetch('http://localhost:8000/songs')
-            .then(res => {
-                if (!res.ok) {
-                    throw Error('could not fetching');
-                }
-                return res.json();
-            })
-            .then(data => {
-                setSongs(data);
-                setIsPending(false);
-                setError(null);
-            })
-            .catch(err => {
-                setIsPending(false);
-                setError(err.message);
-            });
-    }, []);
 
     // I use {} to wrap the return like this:
     // {songs && <SongList songs={songs} handleDelete={handleDelete} />}
