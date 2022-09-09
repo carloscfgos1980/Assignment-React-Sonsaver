@@ -10,7 +10,6 @@
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 600px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
 }
@@ -29,7 +28,6 @@
   color: #f1356d;
 }
 .content {
-  max-width: 600px;
   margin: 40px auto;
   padding: 20px;
 }
@@ -58,4 +56,43 @@
   font-size: 20px;
   color: #f1356d;
   margin-bottom: 8px;
+}
+
+.home {
+ 
+  margin: 0 auto;
+  text-align: center;
+}
+.home form{
+  margin: 20px;
+  display: flex;
+  align-content: space-around;
+}
+.home label {
+  text-align: left;
+  display: block;
+}
+
+.home input {
+  width: 100px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+}
+
+.home select{
+  width: 20px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+}
+.home button {
+  margin: 30px;
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.home form p{
+  margin:10px;
 }
