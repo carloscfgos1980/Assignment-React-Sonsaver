@@ -1,5 +1,21 @@
+// import { useParams } from "react-router-dom";
+// import useFetch from "./useFetch";
+
 const SongList = ({ songs }) => {
     //const songs = props.songs
+    //This parameters method is not working
+    //const { id } = useParams();
+    //const { data: song, error, isPending } = useFetch('http://localhost:8000/songs/' + id);
+    const handleDelete = (id) => {
+        console.log("id", id);
+        fetch('http://localhost:8000/songs/' + id, {
+            method: 'DELETE'
+        })
+            .then(() => {
+                console.log('deleted');
+            });
+    }
+
     return (
         <div className="song-list">
             <div className="up-line">
@@ -14,7 +30,7 @@ const SongList = ({ songs }) => {
                     <p>{song.artist}</p>
                     <p> {song.genre}</p>
                     <p>{song.rating}</p>
-                    <button >delete</button>
+                    <button onClick={() => handleDelete(song.id)}>delete</button>
                 </div>
             ))}
         </div>
