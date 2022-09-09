@@ -1,16 +1,29 @@
 import { useState } from "react";
 
+
 const Inputs = () => {
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [genre, setGenre] = useState('genre');
     const [rating, setRating] = useState('rating');
+    const [isPending, setIsPending] = useState(false);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const blog = { title, artist, genre, rating };
+        const favorite = { title, artist, genre, rating };
 
-        console.log(blog);
+        setIsPending(true);
+
+        fetch('http://localhost:8000/songs', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(favorite)
+        }).then(() => {
+            console.log('new blog added');
+            setIsPending(false);
+        });
+
     }
     return (
         <div>
@@ -19,6 +32,8 @@ const Inputs = () => {
                 <input
                     type="text"
                     required
+                    name="title"
+                    placeholder="title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
@@ -26,6 +41,8 @@ const Inputs = () => {
                 <input
                     type="text"
                     required
+                    name="artist"
+                    placeholder="artist"
                     value={artist}
                     onChange={(e) => setArtist(e.target.value)}
                 />
@@ -33,7 +50,8 @@ const Inputs = () => {
                 <select
                     value={genre}
                     onChange={(e) => setGenre(e.target.value)}
-                >   <option value="genre">genre</option>
+                    name="genre"
+                >   <option value=""></option>
                     <option value="Reggae">Reggae</option>
                     <option value="RockRoll">RockRoll</option>
                     <option value="Cuban alternative">Cuban alternative</option>
@@ -42,6 +60,7 @@ const Inputs = () => {
                 <select
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
+                    name="rating"
                 >   <option value="rating">1</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -49,11 +68,8 @@ const Inputs = () => {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <button>Add Blog</button>
-                <p>{title}</p>
-                <p>{artist}</p>
-                <p>{genre}</p>
-                <p>{rating}</p>
+                {!isPending && <button>Add Blog</button>}
+                {isPending && <button disabled>Adding Blog....</button>}
             </form>
         </div>
     );
