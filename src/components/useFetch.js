@@ -1,31 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
 
 const useFetch = (url) => {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
 
-    const abortCont = new AbortController();//This is to stop the fetching once is done and prevent errors
-    /*
-This is condiction is to catch an error when do sucessfully fetching but there is an error at the end point of the REST API
-               if (!res.ok) {
-                    throw Error('could not fetching');
-                }
-*/
     useEffect(() => {
-        fetch(url, { signal: abortCont.signal })// { signal: abortCont.signal } necessary for abort control
+        const abortCont = new AbortController();// abort fetching when we quickly change page
+        fetch(url, { signal: abortCont.signal })
             .then(res => {
-                if (!res.ok) {// error coming back from server
-                    throw Error('could not fetching');
+                if (!res.ok) { // error coming back from server
+                    throw Error('could not fetch the data for that resource');
                 }
                 return res.json();
             })
             .then(data => {
-                setData(data);
                 setIsPending(false);
+                setData(data);
                 setError(null);
             })
             .catch(err => {
+                // this condiction is to get the error that we create by aborting fetch
                 if (err.name === 'AbortError') {
                     console.log('fetch aborted')
                 } else {
@@ -33,11 +28,12 @@ This is condiction is to catch an error when do sucessfully fetching but there i
                     setIsPending(false);
                     setError(err.message);
                 }
-            });
+            })
 
         // abort the fetch
         return () => abortCont.abort();
-    }, [url]);
+    }, [url])
+
     return { data, isPending, error };
 }
 
