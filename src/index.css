@@ -5,6 +5,8 @@
   margin: 0;
   font-family: "Quicksand";
   color: #333;
+  text-decoration: none;
+  list-style-type: none;
 }
 .navbar {
   padding: 20px;
@@ -32,30 +34,41 @@
   padding: 20px;
 }
 
-/* blog previews / list */
-.up-line{
+/* song previews / list */
+.up-line ul{
   display: flex;
-  justify-content: space-around;
+  justify-content:space-evenly;
+  align-content: center;
+  margin-left: 80px;
+  background-color: #f1356d;
+
 }
 
-.up-line span{
-  color:#f1356d;
+.up-line li{
+  width: 200px;
+  color:#fafafa;
+  font-size: 30px;
+  padding: 8px 200px 8px 0;
 
 }
 .song-preview {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 30px;
-  margin: 20px 20px;
+  padding: 3px 30px;
+  margin: 10px 10px;
   border-bottom: 1px solid #fafafa;
 }
 .song-preview:hover {
   box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
 }
-.song-preview p {
+.song-preview ul{
+  display: flex;
+  justify-content:space-evenly;
+  align-content: center;
+}
+.song-preview li {
+  width: 200px;
   font-size: 20px;
   color: #f1356d;
-  margin-bottom: 8px;
+  margin: 8px 100px 0 0;
 }
 
 .home {
@@ -65,7 +78,7 @@
 .home form{
   margin: 20px;
   display: flex;
-  align-content:space-between;
+  align-content:center;
 }
 .home label {
   text-align: left;

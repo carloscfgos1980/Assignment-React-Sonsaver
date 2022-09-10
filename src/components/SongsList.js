@@ -19,18 +19,24 @@ const SongList = ({ songs }) => {
     return (
         <div className="song-list">
             <div className="up-line">
-                <span>Song:</span>
-                <span>Artist:</span>
-                <span>Genre:</span>
-                <span>Rating:</span>
+                <ul>
+                    <li>Song:</li>
+                    <li>Artist:</li>
+                    <li>Genre:</li>
+                    <li>Rating:</li>
+                    <li></li>
+
+                </ul>
             </div>
             {songs.map(song => (
                 <div className="song-preview" key={song.id} >
-                    <p>{song.title}</p>
-                    <p>{song.artist}</p>
-                    <p> {song.genre}</p>
-                    <p>{song.rating}</p>
-                    <button onClick={() => handleDelete(song.id)}>delete</button>
+                    <ul>
+                        <li>{song.title}</li>
+                        <li >{song.artist}</li>
+                        <li >{song.genre}</li>
+                        <li >{song.rating}</li>
+                        <li><button onClick={() => handleDelete(song.id)} style={{ left: '1000px' }}>delete</button></li>
+                    </ul>
                 </div>
             ))}
         </div>

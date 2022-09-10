@@ -1,3 +1,32 @@
 {
-  "songs": []
+  "songs": [
+    {
+      "title": "Bob Marley",
+      "artist": "One Love",
+      "genre": "Reggae",
+      "rating": "5",
+      "id": 1
+    },
+    {
+      "title": "Black panter",
+      "artist": "Colors",
+      "genre": "RockRoll",
+      "rating": "5",
+      "id": 2
+    },
+    {
+      "title": "Carnaval",
+      "artist": "Celia Cruz",
+      "genre": "Cuban alternative",
+      "rating": "5",
+      "id": 3
+    },
+    {
+      "title": "Abajo Too",
+      "artist": "Kamamkola",
+      "genre": "Cuban alternative",
+      "rating": "5",
+      "id": 4
+    }
+  ]
 }

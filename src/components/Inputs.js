@@ -20,7 +20,7 @@ const Inputs = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(favorite)
         }).then(() => {
-            console.log('new blog added');
+            console.log('new song-artist added');
             setIsPending(false);
         });
 
