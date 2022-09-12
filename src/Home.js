@@ -18,9 +18,7 @@ const Home = () => {
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}
             <Inputs />
-            {songs && <SongList songs={
-                songs.sort((a, b) => a.artist - b.artist)
-            } />}
+            {songs && <SongList songs={songs} />}
         </div>
     );
 }

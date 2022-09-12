@@ -7,23 +7,27 @@
   color: #333;
   text-decoration: none;
   list-style-type: none;
+
 }
 .navbar {
+  margin: 0 100px;
   padding: 20px;
   display: flex;
   align-items: center;
-  margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
+}
+.navbar img{
+  width: 50px;
+  margin-right: 30px;
 }
 .navbar h1 {
   color: #f1356d;
 }
-.navbar .links {
+.links {
   margin-left: auto;
 }
 .navbar a {
   margin-left: 16px;
-  text-decoration: none;
   padding: 6px;
 }
 .navbar a:hover {
@@ -35,11 +39,14 @@
 }
 
 /* song previews / list */
+.song-list{
+  margin: 0 auto;
+}
 .up-line ul{
   display: flex;
   justify-content:space-evenly;
   align-content: center;
-  margin-left: 80px;
+  margin: 0 80px;
   background-color: #f1356d;
 
 }
@@ -110,4 +117,25 @@
   padding: 5px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* About settings*/
+.about{
+  align-content: center;
+  margin: 0 auto;
+  max-width: 800px;
+}
+.about h1{
+  margin-bottom: 40px;
+}
+.about p{
+  margin: 20px;
+  font-size: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+.about img{
+  float:left;
+  width: 200px;
+  margin: 10px 20px;
 }

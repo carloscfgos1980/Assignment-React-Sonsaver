@@ -8,18 +8,25 @@
       "id": 1
     },
     {
-      "title": "Abajo Too",
-      "artist": "Kamankola",
-      "genre": "Cuban alternative",
-      "rating": "5",
-      "id": 2
-    },
-    {
       "title": "Colors",
       "artist": "Black Panters",
       "genre": "RockRoll",
       "rating": "5",
       "id": 3
+    },
+    {
+      "title": "La vida es un divino guion",
+      "artist": "Habana Abierta",
+      "genre": "Cuban alternative",
+      "rating": "5",
+      "id": 5
+    },
+    {
+      "title": "Ay amor",
+      "artist": "Bola Nieve",
+      "genre": "Cuban alternative",
+      "rating": "5",
+      "id": 6
     }
   ]
 }
