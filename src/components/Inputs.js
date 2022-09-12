@@ -28,15 +28,6 @@ const Inputs = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label>title:</label>
-                <input
-                    type="text"
-                    required
-                    name="title"
-                    placeholder="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
                 <label>artist:</label>
                 <input
                     type="text"
@@ -45,6 +36,15 @@ const Inputs = () => {
                     placeholder="artist"
                     value={artist}
                     onChange={(e) => setArtist(e.target.value)}
+                />
+                <label>title:</label>
+                <input
+                    type="text"
+                    required
+                    name="title"
+                    placeholder="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
                 <label>genre:</label>
                 <select
@@ -68,8 +68,8 @@ const Inputs = () => {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                {!isPending && <button>Add Blog</button>}
-                {isPending && <button disabled>Adding Blog....</button>}
+                {!isPending && <button>Add Song</button>}
+                {isPending && <button disabled>Adding Song....</button>}
             </form>
         </div>
     );
