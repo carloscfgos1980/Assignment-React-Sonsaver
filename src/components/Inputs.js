@@ -4,8 +4,8 @@ import { useState } from "react";
 const Inputs = () => {
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
-    const [genre, setGenre] = useState('genre');
-    const [rating, setRating] = useState('rating');
+    const [genre, setGenre] = useState('select');
+    const [rating, setRating] = useState('select');
     const [isPending, setIsPending] = useState(false);
 
 
@@ -26,6 +26,8 @@ const Inputs = () => {
 
         setTitle('');
         setArtist('');
+        setGenre('select');
+        setRating('select');
     }
     return (
         <div>
@@ -53,9 +55,10 @@ const Inputs = () => {
                     value={genre}
                     onChange={(e) => setGenre(e.target.value)}
                     name="genre"
-                >   <option value=""></option>
+                >   <option value="select">-select-</option>
                     <option value="Reggae">Reggae</option>
                     <option value="RockRoll">RockRoll</option>
+                    <option value="jazz">Jazz</option>
                     <option value="Cuban alternative">Cuban alternative</option>
                 </select>
                 <label>rating:</label>
@@ -63,7 +66,7 @@ const Inputs = () => {
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
                     name="rating"
-                >   <option value="rating">1</option>
+                >   <option value="select">-select-</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
