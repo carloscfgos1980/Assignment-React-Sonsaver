@@ -24,6 +24,8 @@ const Inputs = () => {
             setIsPending(false);
         });
 
+        setTitle('');
+        setArtist('');
     }
     return (
         <div>

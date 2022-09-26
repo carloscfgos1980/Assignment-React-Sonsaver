@@ -1,5 +1,6 @@
 // import { useParams } from "react-router-dom";
 // import useFetch from "./useFetch";
+import { FaTrash } from "react-icons/fa";
 
 const SongList = ({ songs }) => {
     songs.sort((a, b) => {
@@ -36,7 +37,6 @@ const SongList = ({ songs }) => {
                     <li>Title:</li>
                     <li>Genre:</li>
                     <li>Rating:</li>
-                    <li></li>
 
                 </ul>
             </div>
@@ -47,8 +47,11 @@ const SongList = ({ songs }) => {
                         <li >{song.artist}</li>
                         <li>{song.title}</li>
                         <li >{song.genre}</li>
-                        <li >{song.rating}</li>
-                        <li><button onClick={() => handleDelete(song.id)} style={{ left: '1000px' }}>delete</button></li>
+                        <li >
+                            {song.rating}
+                            <button className="button-list" onClick={() => handleDelete(song.id)} ><FaTrash /></button>
+                        </li>
+
                     </ul>
                 </div>
             ))}
